@@ -1227,6 +1227,53 @@ void gpioMappingsMigrationCore(Config& config)
         );
     }
 
+// migrate SPI addon to use peripheral manager
+    if (!peripheralOptions.blockSPI0.enabled && addonOptions.analogADS1256Options.enabled) {
+        peripheralOptions.blockSPI0.enabled = addonOptions.analogADS1256Options.enabled;
+        // pin configuration
+        peripheralOptions.blockSPI0.rx = SPI0_PIN_RX;
+
+        markAddonPinIfUsed(peripheralOptions.blockSPI0.rx);
+
+
+        peripheralOptions.blockSPI0.cs = SPI0_PIN_CS;
+
+        markAddonPinIfUsed(peripheralOptions.blockSPI0.cs);
+
+
+        peripheralOptions.blockSPI0.sck = SPI0_PIN_SCK;
+
+        markAddonPinIfUsed(peripheralOptions.blockSPI0.sck);
+
+
+        peripheralOptions.blockSPI0.rx = SPI0_PIN_TX;
+
+        markAddonPinIfUsed(peripheralOptions.blockSPI0.tx);
+    }
+
+    if (!peripheralOptions.blockSPI1.enabled && addonOptions.analogADS1256Options.enabled) {
+        peripheralOptions.blockSPI1.enabled = addonOptions.analogADS1256Options.enabled;
+        // pin configuration
+        peripheralOptions.blockSPI1.rx = SPI1_PIN_RX;
+
+        markAddonPinIfUsed(peripheralOptions.blockSPI1.rx);
+
+
+        peripheralOptions.blockSPI1.cs = SPI1_PIN_CS;
+
+        markAddonPinIfUsed(peripheralOptions.blockSPI1.cs);
+
+
+        peripheralOptions.blockSPI1.sck = SPI1_PIN_SCK;
+
+        markAddonPinIfUsed(peripheralOptions.blockSPI1.sck);
+
+
+        peripheralOptions.blockSPI1.rx = SPI1_PIN_TX;
+
+        markAddonPinIfUsed(peripheralOptions.blockSPI1.tx);
+    }
+
     // migrate USB addons to use peripheral manager
     if (!peripheralOptions.blockUSB0.enabled && (keyboardHostOptions.enabled || psPassthroughOptions.enabled)) {
         peripheralOptions.blockUSB0.enabled = keyboardHostOptions.enabled | psPassthroughOptions.enabled | false;
