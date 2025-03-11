@@ -44,6 +44,7 @@ void PeripheralSPI::setup() {
     gpio_set_function(_SCK, GPIO_FUNC_SPI);
     gpio_set_function(_TX, GPIO_FUNC_SPI);
     gpio_set_function(_RX, GPIO_FUNC_SPI);
+    gpio_set_function(_CS, GPIO_FUNC_SPI);
     gpio_pull_up(_RX);
 
     if (_UseDMA) {

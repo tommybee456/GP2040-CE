@@ -114,7 +114,7 @@ private:
     spi_cpol_t _Cpol;
     spi_cpha_t _Cpha;
 
-    bool _UseDMA;
+    bool _UseDMA = 0;
     int _dmaRxChannel;
     int _dmaTxChannel;
     uint8_t *_dmaRxBuf;
