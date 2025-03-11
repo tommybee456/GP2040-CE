@@ -34,9 +34,9 @@ void PeripheralSPI::setConfig(uint8_t block, uint8_t tx, uint8_t rx, uint8_t sck
 }
 
 void PeripheralSPI::setup() {
-    if (initialized) {
-        spi_deinit(_SPI);
-    }
+    // if (initialized) {
+    //     spi_deinit(_SPI);
+    // }
 
     spi_init(_SPI, _Speed);
     initialized = true;
